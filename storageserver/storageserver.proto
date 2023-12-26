@@ -1,0 +1,27 @@
+// service.proto
+syntax = "proto3";
+
+service DataService {
+  rpc SaveFileChunk(DataRequest) returns (DataResponse);
+  rpc getFileChunk(GetDataRequest) returns (GetDataResponse);
+}
+
+message DataRequest {
+  bytes binary_data = 1;
+  string filename = 2;
+  int32 user_id = 3;
+}
+
+message DataResponse {
+  string error_message = 1;
+}
+
+message GetDataRequest {
+  string filename = 1;
+  int32 user_id = 2;
+}
+
+message GetDataResponse {
+  bytes binary_data = 1;
+  string error_message = 2;
+}
